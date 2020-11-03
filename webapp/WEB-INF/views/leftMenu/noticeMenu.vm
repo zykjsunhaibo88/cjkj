@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<title>项目公告列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../js/jquery-2.1.4.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<style>
+	</style>
+</head>
+<body>
+
+			<div class="panel panel-primary ">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title ">
+						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							信息公告
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse  " role="tabpanel" aria-labelledby="headingOne">
+					<div class="list-group">
+						<a href="#"  class="list-group-item">政务介绍</a>
+						<a href="#" class="list-group-item">禁行公告</a>
+						<a href="#" class="list-group-item">项目公告</a>
+						<a href="#" class="list-group-item">单位评分</a>
+					</div>
+				</div>
+			</div>
+</body>
+</html>

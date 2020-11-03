@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eapConfig>
+   <component name="udolink" isEnabled="true" handler="com.neusoft.unieap.config.handler.UDOLinkConfigHandler" description="数据资源管理服务">
+      <OP_SYS_PATH>WEB-INF/conf/unieap/udolink/</OP_SYS_PATH>
+      <DATASTORE_CONF_PATH>WEB-INF/conf/unieap/dataset</DATASTORE_CONF_PATH>
+   </component>
+</eapConfig>
+

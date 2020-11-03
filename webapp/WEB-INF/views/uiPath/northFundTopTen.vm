@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册用户</title>
+    <link rel='stylesheet' id='bootstrap-css' href="/static/vfy/css/bootstrap.min.css" type='text/css' media='all'/>
+    <script src="/static/jquery/jquery1.9.1.min.js"></script>
+    <script src="/static/vue/vue2.6.11.js"></script>
+    <script src="/static/vue/axios0.19.2.min.js"></script>
+    <script src="/static/vfy/js/bootstrap.min.js"></script>
+        
+</head>
+<body style="heght:500px">
+<div id = "app" >
+    <div class="container" style="margin-left: 0px;">
+        <h3>北上资金前十大活跃股 </h3>
+    
+          <div>
+                 <div>  
+                        <div style="float:left"><input type="file" id="upfile" name="upfile" placeholder=""/></div>
+                        <div><button type="button" v-on:click="importExp">导入</button></div>
+                 </div>
+                    <div>        
+                            <form action="/northFundTopTen/outToExcel_northFundTopTen/" enctype="multipart/form-data"  method="post">		             
+						            <div class="row profile" style="margin-top:20px">
+							           <div class="col-lg-11">
+							             <input type="submit" value="导出Excel">
+						               </div>
+						            </div>
+				             </form>
+                   </div>
+         </div>
+
+       <table class="table table-striped table-bordered table-hover">
+         <thead>
+           <tr class ="">
+           
+              <th>编号</th>
+             <th>代码</th>
+             <th>证券名称</th>
+             <th>合计买卖总额(亿)</th>
+             <th>买入金额(亿)</th>
+             <th>卖出金额(亿)</th>
+             <th>成交净买入(亿)</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr v-for="data in msg" v-bind:key="data.uipId" >
+					  <td>[[data.uipId]]</td>
+                      <td>[[data.code]]</td>
+                      <td>[[data.securitiesName]]</td>
+                      <td>[[data.totalSales]]</td>
+                      <td>[[data.buyAmount]]</td>
+                      <td>[[data.sellAmount]]</td>
+                      <td>[[data.soldNetBuy]]</td>
+           </tr>
+         </tbody>
+       </table>
+       
+         
+          
+       
+             <div class="table-responsive">
+
+          <nav style="float: right">
+                  <ul class="pagination" style="margin: 5px 0 10px 0">
+
+                        <li :class="{disabled:linkurl.previous==null }" @click="prepage" >
+                                <span aria-hidden="true">&laquo;</span>
+                        </li>
+                           
+                        <li :class="{active:curpage==value}"  v-for="(value,key) in Math.ceil(count/15)" >
+                     
+                            <span @click="list(value)"  >[[value]]</span>
+                            
+                        </li>
+                        <li :class="{disabled:linkurl.next==null}"  @click="nextpage" >
+                                <span  aria-hidden="true">&raquo;</span>
+                        </li>
+                  </ul>
+          </nav>
+
+      </div>
+      
+      
+     
+             
+             
+    </div>
+</div>
+</body>
+
+<script>
+    new Vue({
+        delimiters :['[[',']]'],
+        el: "#app",
+        data: {
+            msg : [],
+            retmsg : null,
+            uname : null,
+            pswd : null,
+            email : null,
+            checkid: [],
+            idindex: -1,
+            linkurl : {},
+            count : 0,
+            result : [],
+            clickon : false,
+            curpage : 1
+        },
+        mounted:function(){
+             this.viewlist("/northFundTopTenList/");
+        },       
+        methods:
+            {
+                doshow: function(id){
+
+                    this.idindex = id;
+                    for(var j = 0 ; j < this.msg.length; j++)
+                    {
+                        if (this.msg[j].id == id)
+                        {
+                            this.uname = this.msg[j].name;
+                            this.pswd = this.msg[j].password;
+                            this.email = this.msg[j].email;
+                        }
+                    }
+                    if(this.checkid >=1)
+                    {
+                        this.checkid.shift();
+                    }
+
+                    /*setTimeout(function () {
+                            var i = that.checkid[that.checkid.length -1];
+                            that.idindex = i;
+
+                            if(that.checkid.length > 1) {
+                              that.checkid.shift()
+                            }
+
+                           // document.getElementById().checked = false;
+
+                            for(var j = 0 ; j < that.msg.length; j++)
+                            {
+                                if (that.msg[j].id == i)
+                                {
+                                    that.uname = that.msg[j].name;
+                                    that.pswd = that.msg[j].password;
+                                    that.email = that.msg[j].email;
+                                }
+                            }
+                    },5);
+
+                     */
+
+                },
+
+                listrow(){
+                    this.viewlist("/northFundTopTenList/");
+                },
+			      importExp:function() {
+			                            var formData = new FormData();
+									        var name = $("#upfile").val();
+									        formData.append("file", $("#upfile")[0].files[0]);
+									        formData.append("name", name);
+			                         
+					                          $.ajax({
+									            url: '/northFundTopTen/createTable_northFundTopTen/',
+									            type: 'POST',
+									            async: false,
+									            data: formData,
+									            // 告诉jQuery不要去处理发送的数据
+									            processData: false,
+									            // 告诉jQuery不要去设置Content-Type请求头
+									            contentType: false,
+									            beforeSend: function () {
+									                console.log("正在进行，请稍候");
+									            },
+									            success: function (responseStr) {
+									                if (responseStr != "0") {
+									                    alert("导入成功");
+									                            location.reload();
+									                  
+									                } else {
+									                    alert("导入失败");
+									                }
+									            }
+									        });
+			                   }
+
+                ,
+                viewlist(url) {
+                    axios.get(url).then(respones=>{
+                    this.msg = respones.data.results;
+                    this.linkurl = respones.data.links;
+                    this.count = respones.data.count;
+                    console.log(this.linkurl.next);
+                    })
+                    .catch(function (error)
+                    {
+                        console.log(error);
+                    })
+                },
+                nextpage(){
+           alert("nextpage")
+                    if (this.linkurl.next !== null){
+                        var page = this.linkurl.next.substr(21);
+                        console.log(page);
+                        this.viewlist(page);
+
+                        var  pnum = page.split("=");
+                        if (pnum[1] !== undefined ) {
+                            this.curpage = Number(pnum[1]);
+                        }
+                        else
+                        {
+                            this.curpage = 1;
+                        }
+
+                    }
+                    else
+                    {
+                        alter("最后一页")
+                    }
+
+                },
+                prepage(){
+                    alert("prepage")
+                    if (this.linkurl.previous !== null){
+                        console.log("pre "+this.linkurl.previous)
+                        var page = this.linkurl.previous.substr(21);
+                        this.viewlist(page);
+
+                        var  pnum = page.split("=");
+                        if (pnum[1] !== undefined ) {
+                            this.curpage = Number(pnum[1]);
+                            console.log(this.curpage);
+                        }
+                        else
+                        {
+                            this.curpage = 1;
+                        }
+                    }
+                    else
+                    {
+                        this.curpage = 1;
+                        alter("最后一页")
+                    }
+
+                },
+                list(val){
+                    console.log(val);
+                    this.viewlist('/northFundTopTenList/?page='+val);
+                    this.curpage = Number(val);
+                    console.log(this.curpage);
+                }
+            },
+            created(){
+            }
+
+
+    })
+</script>
+<style>
+
+</style>
+</html>

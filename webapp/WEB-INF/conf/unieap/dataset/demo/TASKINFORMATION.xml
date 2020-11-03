@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\javacode\UniFDP\Project\example\WEB-INF\schema\dataSet.xsd">
+
+<dataSourceName>DEMO</dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>INSERT</auth>
+<auth>DELETE</auth>
+<auth>UPDATE</auth>
+
+<tables>
+	<table tableName="TASKINFORMATION" isPrimary="true">
+		<pk pkName="ID" dataType="12" isAutoIncrement="false"/>
+
+	</table>
+</tables>
+<attributes>
+    <attribute attrName="ID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="50" columnName="ID" isNullable="false" index="1" tableName="TASKINFORMATION"/>
+	<attribute attrName="PRI" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="10" columnName="PRI" isNullable="true" index="2" tableName="TASKINFORMATION"/>
+	<attribute attrName="REMARK" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="80" columnName="REMARK" isNullable="true" index="3" tableName="TASKINFORMATION"/>
+	<attribute attrName="STARTEVENT" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="50" columnName="STARTEVENT" isNullable="true" index="4" tableName="TASKINFORMATION"/>
+	<attribute attrName="STARTTIME" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="50" columnName="STARTTIME" isNullable="true" index="5" tableName="TASKINFORMATION"/>
+	<attribute attrName="TASKCLASSNAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="TASKCLASSNAME" isNullable="true" index="6" tableName="TASKINFORMATION"/>
+	<attribute attrName="TYPE" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="1" columnName="TYPE" isNullable="true" index="7" tableName="TASKINFORMATION"/>
+	<attribute attrName="FREQUENCY" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="FREQUENCY" isNullable="true" index="8" tableName="TASKINFORMATION"/>
+	<attribute attrName="YEAR" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="YEAR" isNullable="true" index="9" tableName="TASKINFORMATION"/>
+	<attribute attrName="MONTH" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="MONTH" isNullable="true" index="10" tableName="TASKINFORMATION"/>
+	<attribute attrName="DAY" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="DAY" isNullable="true" index="11" tableName="TASKINFORMATION"/>
+	<attribute attrName="HOUR" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="HOUR" isNullable="true" index="12" tableName="TASKINFORMATION"/>
+	<attribute attrName="MINUTE" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="MINUTE" isNullable="true" index="13" tableName="TASKINFORMATION"/>
+	<attribute attrName="SECOND" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="SECOND" isNullable="true" index="14" tableName="TASKINFORMATION"/>
+	<attribute attrName="STARTHOUR" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="STARTHOUR" isNullable="true" index="15" tableName="TASKINFORMATION"/>
+	<attribute attrName="STARTMINUTE" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="STARTMINUTE" isNullable="true" index="16" tableName="TASKINFORMATION"/>
+	<attribute attrName="STARTSECOND" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="100" columnName="STARTSECOND" isNullable="true" index="17" tableName="TASKINFORMATION"/>
+	<attribute attrName="IFSTART" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="2" columnName="IFSTART" isNullable="true" index="18" tableName="TASKINFORMATION"/>
+
+</attributes>
+</dataSetConf>

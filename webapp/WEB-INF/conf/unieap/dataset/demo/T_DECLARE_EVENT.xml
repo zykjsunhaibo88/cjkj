@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+<dataSourceName></dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>UPDATE</auth>
+<auth>DELETE</auth>
+<auth>INSERT</auth>
+
+<tables>
+	<table tableName="T_DECLARE_EVENT" isPrimary="true">
+		<pk pkName="LSH" dataType="11" isAutoIncrement="true"/>
+	</table>
+</tables>
+
+<attributes>
+	<attribute attrName="LSH" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="40" columnName="LSH" isNullable="false" index="1" tableName="T_DECLARE_EVENT"/>
+	<attribute attrName="TYPE" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="TYPE" isNullable="true" index="3" tableName="T_DECLARE_EVENT"/>
+	<attribute attrName="TABLENAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="TABLENAME" isNullable="true" index="3" tableName="T_DECLARE_EVENT"/>
+	<attribute attrName="MAINKEY" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="MAINKEY" isNullable="true" index="3" tableName="T_DECLARE_EVENT"/>
+	<attribute attrName="OPERATION" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="OPERATION" isNullable="true" index="3" tableName="T_DECLARE_EVENT"/>
+	<attribute attrName="CREATETIME" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="60" columnName="CREATETIME" isNullable="true" index="7" tableName="T_DECLARE_EVENT"/>
+</attributes>
+
+</dataSetConf>

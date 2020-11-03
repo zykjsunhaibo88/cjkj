@@ -1,0 +1,8 @@
+DataSourceID=PlatformSupportDataSource
+DataSourceTitle=DefaultDataSourceTitle
+DriverName=org.hsqldb.jdbcDriver
+TargetDatabase=hsqldb
+DBServer=unieap
+DataSourceURL=jdbc:hsqldb:hsql://127.0.0.1:9002/unieap
+UserName=sa
+Password=

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+<dataSourceName></dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>UPDATE</auth>
+<auth>DELETE</auth>
+<auth>INSERT</auth>
+
+<tables>
+	<table tableName="ALLUSERTABLE" isPrimary="true">
+		<pk pkName="USERID" dataType="11" isAutoIncrement="false"/>
+	</table>
+</tables>
+
+<attributes>
+	<attribute attrName="USERID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="40" columnName="USERID" isNullable="false" index="1" tableName="ALLUSERTABLE"/>
+	<attribute attrName="SESSIONID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="SESSIONID" isNullable="true" index="3" tableName="ALLUSERTABLE"/>
+	<attribute attrName="IPADDR" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="60" columnName="IPADDR" isNullable="true" index="7" tableName="ALLUSERTABLE"/>
+	<attribute attrName="MODUAL" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="60" columnName="MODUAL" isNullable="true" index="8" tableName="ALLUSERTABLE"/>
+</attributes>
+
+</dataSetConf>
+
+

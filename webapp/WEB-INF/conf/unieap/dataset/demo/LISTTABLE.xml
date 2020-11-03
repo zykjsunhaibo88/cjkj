@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\javacode\UniFDP\Project\example\WEB-INF\schema\dataSet.xsd">
+
+<dataSourceName>DEMO</dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>INSERT</auth>
+<auth>DELETE</auth>
+<auth>UPDATE</auth>
+
+<tables>
+	<table tableName="LISTTABLE" isPrimary="true">
+		<pk pkName="XH" dataType="12" isAutoIncrement="false"/>
+
+	</table>
+</tables>
+<attributes>
+	<attribute attrName="XH" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="XH" isNullable="false" index="1" tableName="LISTTABLE"/>
+	<attribute attrName="NAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="80" columnName="NAME" isNullable="true" index="2" tableName="LISTTABLE"/>
+	<attribute attrName="SEX" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="1" columnName="SEX" isNullable="true" index="3" tableName="LISTTABLE"/>
+	<attribute attrName="BIRTHDAY" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="10" columnName="BIRTHDAY" isNullable="true" index="4" tableName="LISTTABLE"/>
+	<attribute attrName="AGE" aliasName="" isFakeColumn="false" dataType="3" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="2" columnName="AGE" isNullable="true" index="5" tableName="LISTTABLE"/>
+	<attribute attrName="PAY" aliasName="" isFakeColumn="false" dataType="3" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="16" columnName="PAY" isNullable="true" index="6" tableName="LISTTABLE"/>
+	<attribute attrName="CZR" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="80" columnName="CZR" isNullable="true" index="7" tableName="LISTTABLE"/>
+	<attribute attrName="CZSJ" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="10" columnName="CZSJ" isNullable="true" index="8" tableName="LISTTABLE"/>
+</attributes>
+
+</dataSetConf>

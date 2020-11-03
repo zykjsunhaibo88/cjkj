@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+<dataSourceName></dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>UPDATE</auth>
+<auth>DELETE</auth>
+<auth>INSERT</auth>
+
+<tables>
+	<table tableName="T_LOG_DECLARE" isPrimary="true">
+		<pk pkName="LSH" dataType="11" isAutoIncrement="true"/>
+	</table>
+</tables>
+
+<attributes>
+	<attribute attrName="LSH" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="40" columnName="LSH" isNullable="false" index="1" tableName="T_LOG_DECLARE"/>
+	<attribute attrName="NAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="NAME" isNullable="true" index="3" tableName="T_LOG_DECLARE"/>
+	<attribute attrName="TYPE" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="TYPE" isNullable="true" index="3" tableName="T_LOG_DECLARE"/>
+	<attribute attrName="MAINKEYS" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="MAINKEYS" isNullable="true" index="3" tableName="T_LOG_DECLARE"/>
+	<attribute attrName="RESULT" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="200" columnName="RESULT" isNullable="true" index="3" tableName="T_LOG_DECLARE"/>
+	<attribute attrName="ERRORINFO" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="60" columnName="ERRORINFO" isNullable="true" index="7" tableName="T_LOG_DECLARE"/>
+	<attribute attrName="RECORDS" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="60" columnName="RECORDS" isNullable="true" index="7" tableName="T_LOG_DECLARE"/>
+</attributes>
+
+</dataSetConf>

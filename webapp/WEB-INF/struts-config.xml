@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" " http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<global-forwards>
+		<forward name="PurviewMenuProxy" path="/pages/manager/purview/PurviewMenuProxy.jsp" />
+	</global-forwards>
+	<action-mappings>
+		  <action type="com.neusoft.unieap.ria33demo.action.form.Upload_DownLoad_File" parameter="method" path="/upload_downLoad_file">
+	         <forward name="success" path="/page/export/fileList.jsp" />
+	      </action>
+	</action-mappings>
+    <message-resources key="unieap.platform.infotip" parameter="com.neusoft.unieap.resources.platform.infotip.infotip"/> 
+	<plug-in className="com.neusoft.unieap.config.plugin.EAPPlugin" />
+	
+</struts-config>

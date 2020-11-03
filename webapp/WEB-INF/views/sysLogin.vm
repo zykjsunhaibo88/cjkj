@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <title>用户登录</title>
+    <meta charset="用户登录"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/static/vfy/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/static/vfy/login/index.css" type="text/css" />
+    <script src="/static/jquery/jquery1.9.1.min.js"></script>
+    <script src="/static/vfy/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="header"><h1>沈阳首华后台管理平台</h1></div>
+<div class="main">
+    <div class="main_con">
+        <div class="left"><img src="/static/img/login/dl_02.png"/></div>
+        <div class="main_r">
+            <div class="main_r_c">
+                <form class="form-horizontal" style="padding-bottom: 26px"  id="submit_all" name='loginForm' method="post" action="/login">
+                    <div class=" login_01">
+                        <h4 class="col-sm-5 text-left" style="font-weight:normal">用户登录</h4>
+                        <div class="right">
+                            <img src="/static/img/login/dl_03.png"/>
+                        </div>
+                    </div>
+                    #if($!{false1})
+                        <div class="" id="error" style="margin-bottom: 10px; color: #fff;">
+                            <span class="">$!{false1}</span>
+                        </div>
+                    #end
+                    <div class="input-group mar_b10">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" class="form-control" placeholder="用户名" id="username" name="username"/>
+                    </div>
+                    <div class="input-group mar_b10">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" placeholder="密码" name="password" id="password_id"/>
+                    </div>
+
+                    #if($!{false1})
+                        <div class="form-group mar_b10" id="code">
+                            <span class="col-sm-4 text-left mar_l15" style="width:40%;">
+                                <input type="text" name="vcode" id="vcode" placeholder="验证码" class="form-control"/>
+                            </span>
+                            <div class="col-sm-8 text-right mar_r15" style="padding:0; width:50%;">
+                                <img src="/vcode" id="vcode" class="yzm" title="看不清，点击图片" onClick="getVcode(this);return;"/>
+                                <span class="white">点图片换一张</span>
+                            </div>
+                        </div>
+                    #end
+
+                    <div class="mar_b10">
+                            <span class="white">
+                                <a href="$!{reset-password-pre}" class="white">忘记密码?</a>
+                            </span>
+                    </div>
+                    <div class="">
+                        <button type="button" class="form-control btn" onclick="submit_id()"/>登  录 </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+</div>
+</body>
+<script type="text/javascript" charset="utf-8">
+    $(function(){
+        $('#username').bind('keypress',function(e){
+            var event = e || window.event;
+            var code = event.keyCode || event.which || event.charCode;
+            if (code == 13) {
+                submit_id();
+            }
+        });
+        $('#password_id').bind('keypress',function(e){
+            var event = e || window.event;
+            var code = event.keyCode || event.which || event.charCode;
+            if (code == 13) {
+                submit_id();
+            }
+        });
+        $('#vcode').bind('keypress',function(e){
+            var event = e || window.event;
+            var code = event.keyCode || event.which || event.charCode;
+            if (code == 13) {
+                submit_id();
+            }
+        });
+    });
+    function submit_id(){
+        var pswError = "$!{false1}";
+        if (pswError == ""){
+            $('#submit_all').submit();
+            return;
+        }
+        var vcode=$("#vcode").val();
+        //alert(vcode);
+        $.ajax({
+            type:"post",
+            url:"/getVcode",
+            dataType:"json",
+            data:{vcode:vcode},
+            dataFilter:function(data){
+                if(data == "true"){
+                    $('#submit_all').submit();
+                }else{
+                    alert("验证码错误");
+                    return false;
+                }
+            }
+        });
+    }
+    $(function(){
+        $(".background_a").css("background-color","#2f2f2f");
+    });
+    function getVcode(t){
+        //获取当前网址，如： http://localhost:8080/Tmall/index.jsp
+        var curWwwPath=window.document.location.href;
+        //获取主机地址之后的目录如：/Tmall/index.jsp
+        var pathName=window.document.location.pathname;
+        var pos=curWwwPath.indexOf(pathName);
+        //获取主机地址，如： http://localhost:8080
+        var localhostPaht=curWwwPath.substring(0,pos);
+        var src = localhostPaht + "/vcode";
+        t.src=src+"?time=" + new Date().getTime();
+        document.getElementById("vcode").value="";
+        vcodemask = false;
+        $("#getCaptcha").css("background-color","#ddd");
+        $("#getCaptcha").attr("disabled",true);
+    };
+</script>
+</html>

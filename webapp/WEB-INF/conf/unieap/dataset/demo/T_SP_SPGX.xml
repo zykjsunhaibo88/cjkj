@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\javacode\UniFDP\Project\example\WEB-INF\schema\dataSet.xsd">
+
+<dataSourceName>DEMO</dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>INSERT</auth>
+<auth>DELETE</auth>
+<auth>UPDATE</auth>
+
+<tables>
+	<table tableName="T_SP_SPGX" isPrimary="true">
+		<pk pkName="ID" dataType="12" isAutoIncrement="false"/>
+
+	</table>
+</tables>
+<attributes>
+    <attribute attrName="ID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="ID" isNullable="false" index="1" tableName="T_SP_SPGX"/>
+    <attribute attrName="ORG" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="ORG" isNullable="true" index="2" tableName="T_SP_SPGX"/>
+	<attribute attrName="OBJID" aliasName="" isFakeColumn="false" dataType="3" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="80" columnName="OBJID" isNullable="true" index="3" tableName="T_SP_SPGX"/>
+	<attribute attrName="PROCID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="10" columnName="PROCID" isNullable="true" index="4" tableName="T_SP_SPGX"/>
+	<attribute attrName="ACTNAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="10" columnName="ACTNAME" isNullable="true" index="5" tableName="T_SP_SPGX"/>	
+	<attribute attrName="SFBACK" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="SFBACK" isNullable="true" index="6" tableName="T_SP_SPGX"/>
+	<attribute attrName="SFTS" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="SFTS" isNullable="true" index="7" tableName="T_SP_SPGX"/>
+	<attribute attrName="SFFINISH" aliasName="" isFakeColumn="false" dataType="3" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="SFFINISH" isNullable="true" index="8" tableName="T_SP_SPGX"/>
+	<attribute attrName="OPERATIONIFREJECT" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="OPERATIONIFREJECT" isNullable="true" index="5" tableName="T_SP_SPGX"/>
+	<attribute attrName="OPERATIONPANLCLASSNAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="OPERATIONPANLCLASSNAME" isNullable="true" index="7" tableName="T_SP_SPGX"/>
+	<attribute attrName="SERVICECLASSNAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="SERVICECLASSNAME" isNullable="true" index="8" tableName="T_SP_SPGX"/>
+	<attribute attrName="URLCLASSNAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="URLCLASSNAME" isNullable="true" index="8" tableName="T_SP_SPGX"/>
+	</attributes>
+
+</dataSetConf>
+

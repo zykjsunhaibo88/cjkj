@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册用户</title>
+    <link rel='stylesheet' id='bootstrap-css' href="/static/vfy/css/bootstrap.min.css" type='text/css' media='all'/>
+    <script src="/static/jquery/jquery1.9.1.min.js"></script>
+    <script src="/static/vue/vue2.6.11.js"></script>
+    <script src="/static/vue/axios0.19.2.min.js"></script>
+    <script src="/static/vfy/js/bootstrap.min.js"></script>
+
+    	<link rel="stylesheet" type="text/css" href="/static/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyui/demo/demo.css">
+	<script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+
+
+     <script src="/static/echarts/echarts.js"></script>
+
+</head>
+<body>
+<div id = "app" >
+    <div class="container">
+        <h3>数据酷抓取的数据</h3>  
+
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-tabs" data-options="tabWidth:150" style="width:1300px;height:800px">
+		<div title="每日北上资金数据" style="padding:20px">
+		    	 <iframe scrolling="yes" frameborder="0" src="/jumpToEvereDayNorthFundData"  style="width:1500px; height:800px"></iframe>  
+		</div>
+		<div title="北上资金累计净买入" style="padding:20px">
+				<iframe scrolling="yes" frameborder="0" src="/jumpToNorthFundNetBuy"  style="width:1500px; height:800px"></iframe>  
+		</div>
+		<div title="北上资金前十大活跃股" style="padding:20px">
+		       <iframe scrolling="yes" frameborder="0" src="/jumpToNorthFundTopTen"  style="width:1500px; height:800px"></iframe>
+		</div>
+			<div title="龙虎榜榜单数据" style="padding:20px">
+		       <iframe scrolling="yes" frameborder="0" src="/jumpToLongHuList"  style="width:1500px; height:800px"></iframe>
+		</div>
+	
+	</div>
+
+	         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1000px;height:400px;margin-top:20px"></div>
+	
+	
+	<script>
+	
+		         // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('main'));
+	        
+	
+	        // 指定图表的配置项和数据
+	        var option = {
+	               title: {
+        text: '北向资金累计净买入'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ${tradeDate}
+        
+        //axisLabel:{
+          //   interval:0,
+           //  rotate:30
+         //}
+
+    },
+    yAxis: {
+        type: 'value',
+        min:6000,
+        splitNumber:10
+
+    },
+    series: [
+        {
+            name:'北向合计(亿元,人民币)) 累计净买入',
+            type:'line',
+            stack: '累计净买入',
+            data:${cumulativeNetBuy}
+        }
+    ]
+	
+	        };
+	
+	        // 使用刚指定的配置项和数据显示图表。
+	
+	        myChart.setOption(option);
+	</script>  
+       
+</html>

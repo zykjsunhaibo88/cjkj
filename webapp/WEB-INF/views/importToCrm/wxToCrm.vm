@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册用户</title>
+    <link rel='stylesheet' id='bootstrap-css' href="/static/vfy/css/bootstrap.min.css" type='text/css' media='all'/>
+    <script src="/static/jquery/jquery1.9.1.min.js"></script>
+    <script src="/static/vue/vue2.6.11.js"></script>
+    <script src="/static/vue/axios0.19.2.min.js"></script>
+    <script src="/static/vfy/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body style="heght:500px">
+<div id = "app" >
+    <div class="container" style="margin-left: 0px;">
+        <h3>微信导入到客户收款</h3>
+        <div style="margin:20px 0">
+	       <select id="wxPayType">
+			  <option value ="0">普通</option>
+			  <option value ="1">小鹅通</option>
+			</select>
+        </div>
+         <div style="margin-bottom:40px">
+               <div>  
+                        <div style="float:left"><input type="file"   id="upfile" name="upfile" placeholder=""/>   </div>
+                        <div><button type="button" v-on:click="importExp">导入</button></div>
+                 </div>
+         </div>
+         
+
+
+本次导入的数据
+		   <table class="table table-striped table-bordered table-hover">
+		         <thead>
+		           <tr class ="">
+		  
+		             <th>收款标识</th>
+		             <th>收款金额</th>
+		             <th>收款时间</th>
+		             <th>收款类型</th>
+		             <th>备注</th>
+		             <th>导入后状态</th>
+				     <th>原因</th>
+		
+		           </tr>
+		         </thead>
+		         <tbody>
+		           <tr v-for="data in msg" v-bind:key="data.InKey">
+					
+		             <td>[[data.InKey]]</td>
+		              <td>[[data.InAmount]]</td>
+		                <td>[[data.InTime]]</td>		
+		                  <td>[[data.InTypeStr]]</td>        
+		                     <td>[[data.remark]]</td>        
+		                  <td>[[data.executeResultStr]]</td>     
+		             <td>[[data.resultMsg]]</td>
+		               
+		             
+		           </tr>
+		         </tbody>
+		   </table>
+
+             <div class="table-responsive">
+		          <nav style="float: right">
+		                  <ul class="pagination" style="margin: 5px 0 10px 0">
+		
+		                        <li  @click="prepage">
+		                               <span aria-hidden="true">&laquo;</span>
+		                        </li>
+		                   
+		                        <li :class="{active:curpage==value}"  v-for="(value,key) in Math.ceil(count/15)" >		                     
+		                            <span @click="list(value)">[[value]]</span>		                            
+		                        </li>
+		           
+		                        <li @click="nextpage" >
+		                                <span  aria-hidden="true">&raquo;</span>
+		                        </li>
+		                  </ul>
+		          </nav>
+
+             </div>
+
+
+      
+          
+      
+      
+    </div>
+</div>
+</body>
+
+<script>
+
+
+
+
+
+    new Vue({
+        delimiters :['[[',']]'],
+        el: "#app",
+        data: {
+            msg : [],
+            retmsg : null,
+            uname : null,
+            pswd : null,
+            email : null,
+            checkid: [],
+            idindex: -1,
+            linkurl : {},
+            count : 0,
+            result : [],
+            clickon : false,
+            curpage : 1,
+            Signs:null,
+            pre:0,
+            next:1
+        },
+        mounted:function(){
+                //   viewlist("/crm/getWxErrorList");
+                 //  this.viewlist('/crm/getWxErrorList?page='+val+'&Signs='+this.Signs);
+             
+        },       
+        methods:
+            {
+                            importExp:function() {
+                            var formData = new FormData();
+						        var name = $("#upfile").val();
+						        formData.append("file", $("#upfile")[0].files[0]);
+
+						        var options=$("#wxPayType option:selected");  //获取选中的option
+						        var wxPayType=options.val();
+						        formData.append("wxPayType",wxPayType);
+						       // formData.append("name", "C:\\Users\\Administrator\\Desktop\\13915938TRADE2020-08-05.csv");
+						        if(name == "" || name == null || name == undefined){
+						            alert("上传的文件为空");
+						        }        
+						         var that = this;                
+		                          $.ajax({
+						            url: '/crm/importWxOrder',
+						            type: 'POST',
+						            async: false,
+						            data: formData,
+						            // 告诉jQuery不要去处理发送的数据
+						            processData: false,
+						            // 告诉jQuery不要去设置Content-Type请求头
+						            contentType: false,
+						            beforeSend: function () {
+						                console.log("正在进行，请稍候");
+						            },
+						            success: function (data) {
+						            
+						               console.log(data);
+				                          console.log("errorResultCount:"+data.errorResultCount);
+                                           console.log("result:"+data.result);
+
+                                            
+						             console.log(data.errorResultList);
+						             
+						             
+						                  if(data.result == "2"){
+						                      alert("上传的文件为空");
+						                  }else{
+						                  
+						                    if(data.errorResultCount == 0){
+						                              alert("导入成功");
+						                    }else{
+						                      alert("导入失败"+data.errorResultCount+"条数据");
+						                   }
+						                
+						                //  console.log(data.results);
+						                  //  that.msg=data.results;
+						                  
+						                            var Signs=data.Signs;	
+						                            console.log(Signs);
+						                            that.Signs=data.Signs;
+						                            that.curpage=1;
+						                             that.$options.methods.getWxErrorList(Signs,that);//在test3中调用test2的方法
+						           
+						                    
+						                    
+						                  }
+						                 
+						                  
+						                 
+						            }
+						        });
+                   },
+                      getWxErrorList:function(Signs,that){
+                                 var formData = new FormData();
+                                 formData.append("Signs", Signs);
+
+		                          $.ajax({
+						            url: '/crm/getWxErrorList',
+						            type: 'POST',
+						            async: false,
+						            data: formData,
+						            // 告诉jQuery不要去处理发送的数据
+						            processData: false,
+						            // 告诉jQuery不要去设置Content-Type请求头
+						            contentType: false,
+						            beforeSend: function () {
+						                console.log("正在进行，请稍候");
+						            },
+						            success: function (data) {		
+						                 console.log(data.results);		
+						               that.msg=data.results;		
+						               that.count=data.count;	
+						                   console.log(data.count);		
+						               console.log("count");
+						                console.log(that.count);
+						        	                 
+						            }
+						        });
+           },
+                  viewlist(url) {
+
+                    axios.get(url).then(respones=>{
+                    this.msg = respones.data.results;
+                    this.linkurl = respones.data.links;
+                    this.count = respones.data.count;
+                    console.log(this.linkurl.next);
+                    })
+                    .catch(function (error)
+                    {
+                        console.log(error);
+                    })
+                },
+                        
+                nextpage(){
+                    var curpage=this.curpage;
+                     next=curpage+1;
+                     var count=this.count;
+                       
+                     var pageCount= Math.ceil(count/15)
+                    if (next <= pageCount){
+
+                       this.viewlist('/crm/getWxErrorList?page='+next+'&Signs='+this.Signs);
+                       this.curpage = next;
+
+                    }
+                    else
+                    {
+                        alert("最后一页")
+                    }
+
+                },
+                prepage(){
+                
+                
+                     var curpage=this.curpage;
+                     pre=curpage-1;
+
+                    if (pre != 0){
+                          this.viewlist('/crm/getWxErrorList?page='+pre+'&Signs='+this.Signs);
+                          this.curpage = pre;
+                    }
+                    else
+                    {
+                        this.curpage = 1;
+                            alert("最前一页")
+                    }
+
+                },
+                list(val){
+                    console.log(val);
+                    this.viewlist('/crm/getWxErrorList?page='+val+'&Signs='+this.Signs);
+                    this.curpage = Number(val);
+                    console.log(this.curpage);
+                }
+                   
+                   
+            },
+            created(){
+            }
+
+
+    })
+</script>
+<style>
+
+</style>
+</html>

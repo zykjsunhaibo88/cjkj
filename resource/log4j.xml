@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="null" threshold="null">
+   <appender name="platform" class="com.neusoft.unieap.service.log.RollingFileAppender">
+      <!--<param name="File" value="/opt/apache-tomcat-8.5.54/logs/web/platform.log" />-->   
+      <param name="File" value="D:/platform.log" />
+      <param name="MaxFileSize" value="10MB" />
+      <param name="MaxBackupIndex" value="3" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d &gt;&gt; %5p &gt;&gt; %t &gt;&gt; [UniEAP_Platform] &gt;&gt; %l &gt;&gt; %m%n" />
+      </layout>
+   </appender>
+   <appender name="drm" class="com.neusoft.unieap.service.log.RollingFileAppender">
+      <!-- <param name="File" value="/opt/apache-tomcat-8.5.54/logs/web/drm.log" />  -->
+      <param name="File" value="D:/drm.log" />
+      <param name="MaxFileSize" value="10MB" />
+      <param name="MaxBackupIndex" value="3" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d &gt;&gt; %5p &gt;&gt; %t &gt;&gt; [UniEAP_Platform_DRM] &gt;&gt; %l &gt;&gt; %m%n" />
+      </layout>
+   </appender>
+   <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{yyyy/MM/dd-HH:mm:ss} &gt;&gt; %5p &gt;&gt; %t &gt;&gt; %l &gt;&gt; %m%n" />
+      </layout>
+   </appender>
+   <appender name="DBAppender" class="com.neusoft.unieap.service.log.DBAppender">
+      <layout class="com.neusoft.unieap.service.log.DBPatternLayout">
+         <param name="ConversionPattern" value="(log_date,log_category,log_priority,log_message) values (to_date('%d{yyyy/MM/dd-HH:mm:ss}','YYYY/MM/DD-HH24:MI:SS'),'%c','%p','%m')" />
+         <param name="bufferSize" value="50" />
+      </layout>
+   </appender>
+   <appender name="AuditAppender" class="com.neusoft.unieap.service.security.audit.log.AuditAppender">
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{yyyy/MM/dd-HH:mm:ss} &gt;&gt; %m" />
+      </layout>
+   </appender>
+   <logger name="UniEAP_Platform" additivity="true">
+      <level value="ERROR" />
+      <appender-ref ref="platform" />
+   </logger>
+   <logger name="UniEAP_Platform_DRM" additivity="true">
+      <level value="ERROR" />
+      <appender-ref ref="drm" />
+   </logger>
+   <logger name="UniEAP_Platform_Audit" additivity="false">
+      <level value="ERROR" />
+      <appender-ref ref="AuditAppender" />
+   </logger>
+   <root>
+      <priority value="error" />
+      <appender-ref ref="Console" />
+   </root>
+</log4j:configuration>
+

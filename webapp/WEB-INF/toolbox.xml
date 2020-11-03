@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+=============================================================  
+  @(#) toolbox.xml  
+       
+  Copyright (c) 2005, HOBOKEN Project, All Rights Reserved.  
+=============================================================
+-->
+
+<toolbox>
+
+    <tool key="link" class="org.apache.velocity.tools.view.LinkTool"  scope="request"/>
+
+    <data key="b-map" value="/map/baiDuMap"  type="string" scope="application"/>
+    <!--登录页-->
+    <data key="login" value="/sysLogin"  type="string" scope="application"/>
+    <!--退出登录-->
+    <data key="login-out" value="/logout"  type="string" scope="application"/>
+    <!--注册跳转-->
+    <data key="register-pre" value="/registerPre"  type="string" scope="application"/>
+    <!--注册选择用户类型-->
+    <data key="register-basic" value="/registerBasic"  type="string" scope="application"/>
+    <!--注册完成-->
+    <data key="register-complete" value="/registerComplete"  type="string" scope="application"/>
+    <!--重置密码-->
+    <data key="reset-password-pre" value="/resetPasswordPre"  type="string" scope="application"/>
+    <!--重置密码第一步-->
+    <data key="reset-password-first" value="/resetPasswordFirst"  type="string" scope="application"/>
+    <!--重置密码第二步-->
+    <data key="reset-password-second" value="/resetPasswordSecond"  type="string" scope="application"/>
+    <!--用户中心跳转-->
+    <data key="userCenter" value="/userCenter"  type="string" scope="application"/>
+    <!--政府首页-->
+    <data key="government-main" value="/governmentMain"  type="string" scope="application"/>
+    <!--政府基本信息维护页面-->
+    <data key="government-base" value="/governmentBaseInfo"  type="string" scope="application"/>
+    <!--政府基本信息维护-->
+    <data key="save-government-base" value="/saveGovernmentBaseInfo"  type="string" scope="application"/>
+    <!--成员列表-->
+    <data key="government-member" value="/governmentMember"  type="string" scope="application"/>
+    <!--添加成员页面-->
+    <data key="government-add-member" value="/governmentAddMember"  type="string" scope="application"/>
+    <!--添加成员操作-->
+    <data key="to-government-add-member" value="/toGovernmentAddMember"  type="string" scope="application"/>
+    <!--解绑成员操作-->
+    <!--<data key="to-government-cut-member" value="/toGovernmentCutMember"  type="string" scope="application"/>-->
+    <!--在职的成员详细信息-->
+    <data key="government-in-member-detail" value="/governmentInMemberDetail"  type="string" scope="application"/>
+    <!--离职的成员详细信息-->
+    <data key="government-out-member-detail" value="/governmentOutMemberDetail"  type="string" scope="application"/>
+    <!--安全设置-->
+    <data key="government-security" value="/governmentSecurity"  type="string" scope="application"/>
+    <!--消息设置-->
+    <data key="government-messages" value="/govMessages"  type="string" scope="application"/>
+    <!--消息设置-->
+    <data key="government-role-change" value="/governmentRoleChange"  type="string" scope="application"/>
+
+    <!--处置企业首页-->
+    <data key="dispose-enterprise-main" value="/disposeEnterpriseMain"  type="string" scope="application"/>
+    <!--处置企业基本信息维护页面-->
+    <data key="dispose-enterprise-base" value="/disposeEnterpriseBaseInfo"  type="string" scope="application"/>
+    <!--处置企业基本信息维护-->
+    <data key="save-dispose-enterprise-base" value="/saveDisposeEnterpriseBaseInfo"  type="string" scope="application"/>
+    <!--成员列表-->
+    <data key="dispose-enterprise-member" value="/disposeEnterpriseMember"  type="string" scope="application"/>
+    <!--添加成员页面-->
+    <data key="dispose-enterprise-add-member" value="/disposeEnterpriseAddMember"  type="string" scope="application"/>
+    <!--添加成员操作-->
+    <data key="to-dispose-enterprise-add-member" value="/toDisposeEnterpriseAddMember"  type="string" scope="application"/>
+    <!--解绑成员操作-->
+    <data key="to-dispose-enterprise-cut-member" value="/toDisposeEnterpriseCutMember"  type="string" scope="application"/>
+    <!--在职的成员详细信息-->
+    <data key="dispose-enterprise-in-member-detail" value="/disposeEnterpriseInMemberDetail"  type="string" scope="application"/>
+    <!--离职的成员详细信息-->
+    <data key="dispose-enterprise-out-member-detail" value="/disposeEnterpriseOutMemberDetail"  type="string" scope="application"/>
+    <!--安全设置-->
+    <data key="dispose-enterprise-security" value="/disposeEnterpriseSecurity"  type="string" scope="application"/>
+    <!--消息设置-->
+    <data key="dispose-enterprise-messages" value="/disposeEnterpriseMessages"  type="string" scope="application"/>
+    <!--修改角色-->
+    <data key="dispose-enterprise-role-change" value="/disposeEnterpriseRoleChange"  type="string" scope="application"/>
+
+    <!--建筑企业首页-->
+    <data key="construction-enterprise-main" value="/constructionEnterpriseMain"  type="string" scope="application"/>
+    <!--建筑企业基本信息维护页面-->
+    <data key="construction-enterprise-base" value="/constructionEnterpriseBaseInfo"  type="string" scope="application"/>
+    <!--建筑企业基本信息维护-->
+    <data key="save-construction-enterprise-base" value="/saveConstructionEnterpriseBaseInfo"  type="string" scope="application"/>
+    <!--成员列表-->
+    <data key="construction-enterprise-member" value="/constructionEnterpriseMember"  type="string" scope="application"/>
+    <!--添加成员页面-->
+    <data key="construction-enterprise-add-member" value="/constructionEnterpriseAddMember"  type="string" scope="application"/>
+    <!--添加成员操作-->
+    <data key="to-construction-enterprise-add-member" value="/toConstructionEnterpriseAddMember"  type="string" scope="application"/>
+    <!--解绑成员操作-->
+    <data key="to-construction-enterprise-cut-member" value="/toConstructionEnterpriseCutMember"  type="string" scope="application"/>
+    <!--在职的成员详细信息-->
+    <!--<data key="construction-enterprise-in-member-detail" value="/constructionEnterpriseInMemberDetail"  type="string" scope="application"/>-->
+    <!--离职的成员详细信息-->
+    <data key="construction-enterprise-out-member-detail" value="/constructionEnterpriseOutMemberDetail"  type="string" scope="application"/>
+    <!--安全设置-->
+    <!--<data key="construction-enterprise-security" value="/constructionEnterpriseSecurity"  type="string" scope="application"/>-->
+    <!--消息设置-->
+    <data key="construction-enterprise-messages" value="/constructionEnterpriseMessages"  type="string" scope="application"/>
+    <!--改变角色-->
+    <data key="construction-enterprise-role-change" value="/constructionEnterpriseRoleChange"  type="string" scope="application"/>
+
+    <!--运输企业首页-->
+    <data key="logistics-enterprise-main" value="/logisticsEnterpriseMain"  type="string" scope="application"/>
+    <!--运输企业基本信息维护页面-->
+    <data key="logistics-enterprise-base" value="/logisticsEnterpriseBaseInfo"  type="string" scope="application"/>
+    <!--运输企业基本信息维护-->
+    <data key="save-logistics-enterprise-base" value="/saveLogisticsEnterpriseBaseInfo"  type="string" scope="application"/>
+    <!--成员列表-->
+    <data key="logistics-enterprise-member" value="/logisticsEnterpriseMember"  type="string" scope="application"/>
+    <!--添加成员页面-->
+    <data key="logistics-enterprise-add-member" value="/logisticsEnterpriseAddMember"  type="string" scope="application"/>
+    <!--添加成员操作-->
+    <data key="to-logistics-enterprise-add-member" value="/toLogisticsEnterpriseAddMember"  type="string" scope="application"/>
+    <!--解绑成员操作-->
+    <data key="to-logistics-enterprise-cut-member" value="/toLogisticsEnterpriseCutMember"  type="string" scope="application"/>
+    <!--在职的成员详细信息-->
+    <data key="logistics-enterprise-in-member-detail" value="/logisticsEnterpriseInMemberDetail"  type="string" scope="application"/>
+    <!--离职的成员详细信息-->
+    <data key="logistics-enterprise-out-member-detail" value="/logisticsEnterpriseOutMemberDetail"  type="string" scope="application"/>
+    <!--安全设置-->
+    <data key="logistics-enterprise-security" value="/logisticsEnterpriseSecurity"  type="string" scope="application"/>
+    <!--消息设置-->
+    <data key="logistics-enterprise-messages" value="/logisticsEnterpriseMessages"  type="string" scope="application"/>
+    <!--改变角色-->
+    <data key="logistics-enterprise-role-change" value="/logisticsEnterpriseRoleChange"  type="string" scope="application"/>
+
+    <!--页面维护-->
+    <data key="home-page-module-list-index" value="/home/page/module/list/index"  type="string" scope="application"/>
+
+    <!--轮播图管理-->
+    <data key="home-page-module-save-carousel" value="/home/page/module/saveCarousel"  type="string" scope="application"/>
+
+    <data key="home-page-module-query-carousel" value="/home/page/module/query/carousel"  type="string" scope="application"/>
+
+    <data key="home-page-module-delete-carousel" value="/home/page/module/delete/carousel"  type="string" scope="application"/>
+
+    <data key="home-page-module-modify-carousel" value="/home/page/module/modify/carousel"  type="string" scope="application"/>
+
+    <data key="home-page-module-upOne-carousel" value="/home/page/module/upOne/carousel"  type="string" scope="application"/>
+
+    <data key="home-page-module-save-interval" value="/home/page/module/save/interval"  type="string" scope="application"/>
+
+    <!--菜单模块管理-->
+    <data key="home-page-module-save-menu" value="/home/page/module/save/menu"  type="string" scope="application"/>
+
+    <data key="home-page-module-query-menu" value="/home/page/module/query/menu"  type="string" scope="application"/>
+
+    <data key="home-page-module-delete-menu" value="/home/page/module/delete/menu"  type="string" scope="application"/>
+
+    <data key="home-page-module-modify-menu" value="/home/page/module/modify/menu"  type="string" scope="application"/>
+
+    <data key="home-page-module-upOne-menu" value="/home/page/module/upOne/menu"  type="string" scope="application"/>
+
+    <!--应用下载维护预览 -->
+    <data key="app-download-pre" value="/appDownload/appDownPre"  type="string" scope="application"/>
+
+    <!--法律信息维护 -->
+    <data key="law-info-query-detail" value="/law/info/query/detail"  type="string" scope="application"/>
+    <data key="law-info-edit-detail" value="/law/info/modify"  type="string" scope="application"/>
+    <!--footer-->
+    <!--<data key="web-basic-info-new" value="/web/basic/info/new"  type="string" scope="application"/>-->
+    <data key="web-basic-info-edit" value="/web/basic/info/edit/info"  type="string" scope="application"/>
+    <!--<data key="web-basic-info-modify" value="/web/basic/info/edit/info"  type="string" scope="application"/>-->
+    <data key="web-basic-info-detail" value="/web/basic/info/query/detail"  type="string" scope="application"/>
+    <data key="web-basic-info-preview" value="/web/basic/info/preview"  type="string" scope="application"/>
+
+    <!--查询项目列表 -->
+    <data key="construction-query-project-list" value="/construction/queryProjectList"  type="string" scope="application"/>
+    <!--查询项目详细信息 -->
+    <!--<data key="construction-query-project-manage-detail" value="/construction/queryProjectManageDetail"  type="string" scope="application"/>-->
+    <!--查询项目未确认详细信息 -->
+    <data key="construction-query-project-confirm-detail" value="/construction/queryProjectConfirmDetail"  type="string" scope="application"/>
+
+    <!--&lt;!&ndash;查询处置场详细信息 &ndash;&gt;-->
+    <!--<data key="dispose-query-dispose-manage-detail" value="/disposeEnterprise/queryDisposeManageDetail"  type="string" scope="application"/>-->
+    <!--查询处置场未确认详细信息 -->
+    <data key="dispose-query-confirm-detail" value="/disposeEnterprise/queryDisposeConfirmDetail"  type="string" scope="application"/>
+
+    <!--查询处置场未确认详细信息 -->
+    <data key="dispose-update-basic" value=" /dispose/updateDisposeBasic"  type="string" scope="application"/>
+    <!--查询处置场未确认详细信息 -->
+    <data key="dispose-update-introduce" value="/dispose/updateDisposeIntroduce"  type="string" scope="application"/>
+    <tool>
+        <key>date</key>
+        <scope>application</scope>
+        <class>org.apache.velocity.tools.generic.DateTool</class>
+        <parameter name="format" value="yyyy-MM-dd HH:mm:ss"/>
+    </tool>
+
+    <data key="contract-query-detail" value="/contract/disposer/contract_detail"  type="string" scope="application"/>
+    <data key="contract-query-confirm-detail" value="/contract/disposer/contract_confirm_detail"  type="string" scope="application"/>
+    <data key="disenter_query_detail" value="/contract/disposer/disenter_detail"  type="string" scope="application"/>
+    <data key="disenter_query_contract" value="/contract/disenter/contract_detail"  type="string" scope="application"/>
+    <data key="conenter_project_detail" value="/contract/construction/project_detail"  type="string" scope="application"/>
+    <data key="conenter_clear_detail" value="/contract/construction/project_clear_contract_detail"  type="string" scope="application"/>
+    <data key="conenter_dispose_detail" value="/contract/construction/project_dispose_contract_detail"  type="string" scope="application"/>
+    <data key="logitics_contract_detail" value="/contract/logitics/contract_detail"  type="string" scope="application"/>
+
+ <!--用户中心跳转-->
+    <data key="announcementLists" value="/announcementLists"  type="string" scope="application"/>
+</toolbox>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>监控管理列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="../../js/jquery-2.1.4.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+    </style>
+</head>
+<body>
+
+<div class="panel panel-primary ">
+    <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title ">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                审批管理
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse  " role="tabpanel" aria-labelledby="headingOne">
+        <div class="list-group">
+            <a href="#"  class="list-group-item">排放许可核准</a>
+            <a href="#" class="list-group-item">清运核准</a>
+        </div>
+    </div>
+</div>
+<div class="panel panel-primary ">
+    <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title ">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                监控管理
+            </a>
+        </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse  " role="tabpanel" aria-labelledby="headingTwo">
+        <div class="list-group">
+            <a href="../monitor/CWS106000统计中心.html" target="_top" class="list-group-item">统计中心</a>
+            <a href="#" class="list-group-item">地图全景</a>
+            <a href="../monitor/CWS106020辖区监控对象列表.html" target="_top" class="list-group-item">监控对象</a>
+            <a href="../monitor/CWS106030违章信息列表.html" target="_top" class="list-group-item">违章信息</a>
+            <a href="../monitor/CWS106040举报信息列表.html" target="_top" class="list-group-item">举报信息</a>
+            <a href="../monitor/CWS106050执法人员列表.html" target="_top" class="list-group-item">执法人员</a>
+            <a href="../monitor/CWS106002固废统计.html" target="_top" class="list-group-item">固废统计</a>
+            <!-- <a href="../monitor/CWS106060紧急情况列表.html" target="_top" class="list-group-item">紧急情况信息</a>
+            <a href="#" class="list-group-item">项目/项目状态图</a> -->
+        </div>
+    </div>
+</div>
+<div class="panel panel-primary ">
+    <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title ">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                评分管理
+            </a>
+        </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse  " role="tabpanel" aria-labelledby="headingThree">
+        <div class="list-group">
+            <a href="../evaluate/CWS105010运输单位评分管理.html" target="_top" class="list-group-item">运输单位</a>
+            <a href="../evaluate/CWS105030施工项目评分管理.html" target="_top" class="list-group-item">施工项目</a>
+            <a href="../evaluate/CWS105020处置场评分管理.html" target="_top" class="list-group-item">处置场</a>
+        </div>
+    </div>
+</div>
+<div class="panel panel-primary ">
+    <div class="panel-heading" role="tab" id="headingFour">
+        <h4 class="panel-title ">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                消息中心
+            </a>
+        </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse  " role="tabpanel" aria-labelledby="headingFour">
+        <div class="list-group">
+            <a href="#"  class="list-group-item">消息</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	   http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+	   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+	   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 登录页配置，自定义安全过滤器 开始 -->
+    <security:http pattern="/busCallPC/**" security="none" />
+    <security:http pattern="/alarm/**" security="none" />
+    <security:http pattern="/app/**" security="none" />
+    <security:http pattern="/wqzf/**" security="none" />
+
+    <security:http auto-config="true">
+        <security:csrf disabled="true" />
+        <security:headers>
+            <security:frame-options policy="SAMEORIGIN"/>
+        </security:headers>
+        <security:form-login login-page="/sysLogin"
+                             username-parameter="username"
+                             password-parameter="password"
+                             default-target-url="/loginMain"
+                             always-use-default-target="true"
+                             authentication-failure-url="/loginError"/>
+        <security:logout logout-success-url="/sysLogin" />
+        <security:custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+        <security:access-denied-handler error-page="/noright.html"/>
+        <security:session-management invalid-session-url="/sysLogin"/>
+    </security:http>
+
+
+    <bean id="resourceProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:data.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:redis.properties</value>
+                <value>classpath:log4j.properties</value>
+            </list>
+        </property>
+        <property name="properties">
+            <ref bean="resourceProperties"/>
+        </property>
+    </bean>
+
+
+
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="validationQuery" value="select 1"/>
+    </bean>
+    
+    
+    <bean id="myFilter" class="com.br.tvlicai.firstchinanet.business.service.SpringSecurityAcl.MySecurity.MyFilterSecurityInterceptor">
+        <property name="accessDecisionManager" ref="accessDecisionManager" />
+        <property name="authenticationManager" ref="authenticationManager" />
+        <property name="securityMetadataSource" ref="mySecurityMetadataSource" />
+    </bean>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="myUserDetailsService">
+            <security:password-encoder hash="md5">
+                <security:salt-source user-property="username" />
+            </security:password-encoder>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean name="myUserDetailsService" class="com.br.tvlicai.firstchinanet.business.service.SpringSecurityAcl.MySecurity.MyUserDetailsService">
+    </bean>
+
+    <!-- 角色继承 -->
+    <bean id="roleHierarchy" class="com.br.tvlicai.firstchinanet.business.service.SpringSecurityAcl.RoleHierarchy.MyRoleHierarchyImpl"></bean>
+
+    <!-- 权限继承配置 -->
+    <bean id="roleHierarchyVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
+        <constructor-arg ref="roleHierarchy" />
+    </bean>
+
+    <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg name="decisionVoters"  >
+            <list>
+                <bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <ref bean="roleHierarchyVoter" />
+                <bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+            </list>
+        </constructor-arg>
+        <property name="allowIfAllAbstainDecisions" value="false"/>
+    </bean>
+
+    <bean name="mySecurityMetadataSource"
+                class="com.br.tvlicai.firstchinanet.business.service.SpringSecurityAcl.MySecurity.MyInvocationSecurityMetadataSourceService">
+    </bean>
+    <!-- 登录页配置，自定义安全过滤器 结束 -->
+
+    <!-- spring security acl start-->
+    <bean id="aclService"  class="org.springframework.security.acls.jdbc.JdbcMutableAclService" >
+        <constructor-arg ref = "dataSource" />
+        <constructor-arg ref = "lookupStrategy" />
+        <constructor-arg ref = "aclCache" />
+        <property name="classIdentityQuery" value="SELECT @@IDENTITY"/>
+        <property name="sidIdentityQuery" value="SELECT @@IDENTITY"/>
+    </bean>
+
+
+    <bean id = "lookupStrategy" class = "org.springframework.security.acls.jdbc.BasicLookupStrategy" >
+        <constructor-arg ref = "dataSource" />
+        <constructor-arg ref = "aclCache" />
+        <constructor-arg ref = "aclAuthorizationStrategy" />
+        <constructor-arg ref = "grantingStrategy" />
+    </bean >
+
+    <bean id = "aclAuthorizationStrategy" class = "org.springframework.security.acls.domain.AclAuthorizationStrategyImpl" >
+        <constructor-arg >
+            <list >
+                <bean class = "org.springframework.security.core.authority.SimpleGrantedAuthority" >
+                    <constructor-arg value = "ROLE_ADMIN" /> <!-- 改变所有权需要的权限 -->
+                </bean >
+                <bean class = "org.springframework.security.core.authority.SimpleGrantedAuthority" >
+                    <constructor-arg value = "gaModifyAuditing" /> <!-- 改变授权需要的权限 -->
+                </bean >
+                <bean class = "org.springframework.security.core.authority.SimpleGrantedAuthority" >
+                    <constructor-arg value = "gaGeneralChanges" /> <!-- 改变其它信息所需要的权限 -->
+                </bean >
+            </list >
+        </constructor-arg >
+    </bean >
+
+    <bean id = "grantingStrategy"  class = "org.springframework.security.acls.domain.DefaultPermissionGrantingStrategy" >
+        <constructor-arg >
+            <bean class = "org.springframework.security.acls.domain.ConsoleAuditLogger" />
+        </constructor-arg >
+    </bean >
+
+    <bean id = "aclCache" class = "org.springframework.security.acls.domain.EhCacheBasedAclCache" >
+        <constructor-arg ref = "cache" /> <!-- 对应于 Ehcache -->
+        <constructor-arg ref = "grantingStrategy" />
+        <constructor-arg ref = "aclAuthorizationStrategy" />
+    </bean >
+    <!-- 定义Ehcache -->
+    <bean id = "cache" class = "org.springframework.cache.ehcache.EhCacheFactoryBean" >
+        <property name = "cacheName" value = "aclCache" />
+        <property name = "cacheManager" ref = "aclCacheManager" />
+    </bean >
+    <!-- 定义 CacheManager -->
+    <bean id = "aclCacheManager"
+          class = "org.springframework.cache.ehcache.EhCacheManagerFactoryBean" >
+        <!-- 指定配置文件的位置 -->
+        <property name = "configLocation" value = "classpath:ehcache.xml" />
+        <!-- 指定新建的 CacheManager 的名称 -->
+        <property name = "cacheManagerName" value = "aclCacheManager" />
+    </bean >
+
+    <security:global-method-security pre-post-annotations = "enabled" >
+        <security:expression-handler ref = "expressionHandler" />
+    </security:global-method-security >
+
+    <bean id = "expressionHandler" class = "org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler" >
+        <property name = "permissionEvaluator" ref = "aclPermissionEvaluator" />
+    </bean >
+
+    <bean id="sidRetrievalStrategy" class="org.springframework.security.acls.domain.SidRetrievalStrategyImpl">
+        <constructor-arg ref="roleHierarchy"/>
+    </bean>
+
+    <bean id = "aclPermissionEvaluator" class = "org.springframework.security.acls.AclPermissionEvaluator" >
+        <constructor-arg ref = "aclService" />
+        <property name="sidRetrievalStrategy" ref="sidRetrievalStrategy"/>
+     </bean >
+
+    <!-- spring security acl end-->
+
+</beans>

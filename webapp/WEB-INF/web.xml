@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID"
+         version="3.0">
+  <display-name>dounine-frame</display-name>
+
+  <servlet>
+    <servlet-name>javax.ws.rs.core.Application</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>javax.ws.rs.core.Application</servlet-name>
+    <url-pattern>/webapp/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- 添加对spring的支持 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring-config-base.xml</param-value>
+  </context-param>
+
+  <!-- 添加springMVC前端控制器 -->
+  <servlet>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-config-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <!--通过 servlet 跳转首页面-->
+  <servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>/sysLogin</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+      <servlet-name>action</servlet-name>
+      <servlet-class>com.neusoft.unieap.action.EAPActionServlet</servlet-class>
+      <init-param>
+         <param-name>debug</param-name>
+         <param-value>2</param-value>
+      </init-param>
+      <init-param>
+         <param-name>config</param-name>
+         <param-value>/WEB-INF/struts-config.xml</param-value>
+      </init-param>
+      <load-on-startup>2</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>action</servlet-name>
+      <url-pattern>*.action</url-pattern>
+   </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>home/index</welcome-file>
+  </welcome-file-list>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.gif</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.png</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.ico</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.woff</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.woff2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.ttf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.json</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.apk</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.xls</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.xlsx</url-pattern>
+  </servlet-mapping>
+  <!-- 添加UTF-8编码支持 -->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <servlet-name>springMVC</servlet-name>
+  </filter-mapping>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+  <session-config>
+    <session-timeout>120</session-timeout>
+  </session-config>
+  <!-- 欢迎页面 -->
+  <!--<welcome-file-list>-->
+    <!--<welcome-file>index.jsp</welcome-file>-->
+  <!--</welcome-file-list>-->
+
+  <error-page>
+    <error-code>500</error-code>
+    <location>/500.html</location>
+  </error-page>
+
+</web-app>

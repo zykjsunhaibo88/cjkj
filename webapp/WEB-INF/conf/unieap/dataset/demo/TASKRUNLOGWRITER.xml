@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\javacode\UniFDP\Project\example\WEB-INF\schema\dataSet.xsd">
+
+<dataSourceName>DEMO</dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>INSERT</auth>
+<auth>DELETE</auth>
+<auth>UPDATE</auth>
+
+<tables>
+	<table tableName="TASKRUNLOGWRITER" isPrimary="true">
+		<pk pkName="ID" dataType="12" isAutoIncrement="false"/>
+
+	</table>
+</tables>
+<attributes>
+	<attribute attrName="ID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="20" columnName="ID" isNullable="false" index="1" tableName="TASKRUNLOGWRITER"/>
+	<attribute attrName="TASKCLASSNAME" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="80" columnName="TASKCLASSNAME" isNullable="true" index="2" tableName="TASKRUNLOGWRITER"/>
+	<attribute attrName="OPERATIONOBJECT" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="1" columnName="OPERATIONOBJECT" isNullable="true" index="3" tableName="TASKRUNLOGWRITER"/>
+	<attribute attrName="RUNRESULT" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="10" columnName="RUNRESULT" isNullable="true" index="4" tableName="TASKRUNLOGWRITER"/>
+	<attribute attrName="TASKBEGINTIME" aliasName="" isFakeColumn="false" dataType="3" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="2" columnName="TASKBEGINTIME" isNullable="true" index="5" tableName="TASKRUNLOGWRITER"/>
+</attributes>
+
+</dataSetConf>
+

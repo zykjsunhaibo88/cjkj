@@ -1,0 +1,8 @@
+DataSourceID=PlatformSupportDataSource
+DataSourceTitle=Ö§³ÅÊý¾Ý¿â
+DriverName=oracle.jdbc.driver.OracleDriver
+TargetDatabase=ORACLE
+DBServer=psd
+DataSourceURL=192.168.210.220:1521
+UserName =drm_u2
+Password=unieap

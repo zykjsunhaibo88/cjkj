@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSetConf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+<dataSourceName></dataSourceName>
+
+<pageSize>0</pageSize>
+<auth>UPDATE</auth>
+<auth>DELETE</auth>
+<auth>INSERT</auth>
+
+<tables>
+	<table tableName="T_DECLARE" isPrimary="true">
+		<pk pkName="DECLAREID" dataType="11" isAutoIncrement="true"/>
+	</table>
+</tables>
+
+<attributes>
+	<attribute attrName="DECLAREID" aliasName="" isFakeColumn="false" dataType="12" isPrimaryKey="true" isAutoIncrement="false" isReadOnly="false" maxlength="40" columnName="DECLAREID" isNullable="false" index="1" tableName="T_DECLARE"/>
+	<attribute attrName="DECLARECONTENT" aliasName="" isFakeColumn="false" dataType="93" isPrimaryKey="" isAutoIncrement="false" isReadOnly="false" maxlength="60" columnName="DECLARECONTENT" isNullable="true" index="7" tableName="T_DECLARE"/>
+</attributes>
+
+</dataSetConf>
+
